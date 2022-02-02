@@ -25,7 +25,7 @@ namespace AuthenticationBlazor.Client.Services.AuthService
                 ErrorMessage = desegializingResponse.Message;
                 return false;
             }
-            await _localStorage.SetItemAsync("token", desegializingResponse.Data);
+            SetToken(desegializingResponse.Data);
             return true;
             
         }
@@ -41,6 +41,19 @@ namespace AuthenticationBlazor.Client.Services.AuthService
             }
             return true;
             
+        }
+
+        public async void SetToken(string token)
+        {
+            await _localStorage.RemoveItemAsync("token");
+            await _localStorage.SetItemAsync("token", token);
+            
+        }
+
+        public async Task<string> GetToken()
+        {
+            var token = await _localStorage.GetItemAsync<string>("token");
+            return token;
         }
     }
 }

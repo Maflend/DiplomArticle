@@ -1,4 +1,5 @@
 ﻿using AuthenticationBlazor.Server.Services.ProductService;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,7 +15,7 @@ namespace AuthenticationBlazor.Server.Controllers
         {
             _productService = productService;
         }
-        [HttpGet()]
+        [HttpGet()][Authorize]
         public async Task<ActionResult<ServerResponse<List<Product>>>> GetAll()
         {
             try
