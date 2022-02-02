@@ -11,6 +11,8 @@ namespace AuthenticationBlazor.Client.Services.AuthService
     {
         Task<bool> Login(UserLogin request);
         Task<bool> Register(UserRegister request);
+        void SetToken(string token);
+        Task<string> GetToken();
         string ErrorMessage { get; set; }
     }
 }
