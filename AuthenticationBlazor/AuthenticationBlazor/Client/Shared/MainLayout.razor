@@ -1,0 +1,32 @@
+﻿@inherits LayoutComponentBase
+ <BlazoredToasts Position="Blazored.Toast.Configuration.ToastPosition.BottomRight"/>
+
+<div class="page">
+    
+    @if(sliderActivity == true)
+    {
+         <div class="sidebar">
+             <NavMenu />
+         </div>
+    }
+   
+
+    <main>
+      
+        <div class="top-row px-4">
+            <button class="btn btn-primary" style="margin-left:0px; margin-right:auto;" @onclick="@(()=>sliderActivity=!sliderActivity)">-</button>
+            <a class="link-dark" href="https://github.com/Maflend/DiplomArticle.git" style="float:left;">            
+                <img class="mb-2" src="https://cdn-icons.flaticon.com/png/512/3128/premium/3128308.png?token=exp=1643408906~hmac=379e426dcdf8904ad3100e92688d54af" width="30"/>
+                <b>GitHub</b>
+            </a>
+        </div>
+
+        <article class="content px-4">
+            @Body
+        </article>
+    </main>
+</div>
+
+@code{
+    private bool sliderActivity = false;
+}
